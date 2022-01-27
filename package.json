@@ -62,13 +62,14 @@
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.4.0",
     "@types/node": "^16.11.21",
-    "@types/react-dom": "^17.0.11",
     "@types/react": "^17.0.38",
+    "@types/react-dom": "^17.0.11",
     "autoprefixer": "^10.4.2",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "prettier": "^2.5.1",
+    "fast-check": "^2.21.0",
     "postcss": "^8.4.5",
+    "prettier": "^2.5.1",
     "tailwindcss": "^3.0.17",
     "webpack": "^5.67.0"
   }
