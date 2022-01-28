@@ -1,1 +1,3 @@
-export {};
+import LeftCenterRight from "./LeftCenterRight";
+
+export { LeftCenterRight };
