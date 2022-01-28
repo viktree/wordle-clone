@@ -9,7 +9,7 @@ const Settings: FunctionComponent<{ onClick: any }> = ({
   <button
     type="button"
     onClick={onClick}
-    className="p-1 rounded-full text-slate-900 dark:text-slate-100"
+    className="rounded-full text-slate-900 dark:text-slate-100"
   >
     {children}
     <SettingsIcon />

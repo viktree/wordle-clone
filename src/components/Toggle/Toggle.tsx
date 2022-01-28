@@ -7,7 +7,7 @@ const Toggle: FunctionComponent<{
   toggleIsDarkMode: () => void;
 }> = ({ isDarkMode, toggleIsDarkMode }) => {
   return (
-    <div className="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in ">
+    <div className="relative inline-block w-10 select-none transition duration-200 ease-in ">
       <input
         type="checkbox"
         name="toggle"

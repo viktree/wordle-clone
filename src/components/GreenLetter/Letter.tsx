@@ -6,7 +6,7 @@ const Letter: FunctionComponent<{ letter: string; letterKey: string }> = ({
 }) => (
   <span
     className="w-12 h-12 inline-flex items-center justify-center font-black p-30 rounded-lg bg-green-500 text-white"
-    key={letterKey}
+    key={letter}
   >
     {letter}
   </span>

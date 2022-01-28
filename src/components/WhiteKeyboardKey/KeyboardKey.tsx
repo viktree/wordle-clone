@@ -6,7 +6,7 @@ const WhiteKeyboardKey: FunctionComponent<{
 }> = ({ letter, letterKey }) => (
   <span
     className="w-8 h-12 inline-flex items-center justify-center font-black p-30 text-black dark:text-white outline outline-gray-500"
-    key={letterKey}
+    key={letter}
   >
     {letter}
   </span>
