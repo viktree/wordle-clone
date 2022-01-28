@@ -1,6 +1,6 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent } from 'react';
 
-import { ReactComponent as SettingsIcon } from "./settings.svg";
+import { ReactComponent as SettingsIcon } from './settings.svg';
 
 const Settings: FunctionComponent<{ onClick: any }> = ({
   children,

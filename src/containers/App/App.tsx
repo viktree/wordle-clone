@@ -1,6 +1,6 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent } from 'react';
 
-import { GlobalContextProvider, Toggle } from "..";
+import { GlobalContextProvider, Toggle } from '..';
 import {
   Background,
   BackspaceKey,
@@ -9,18 +9,18 @@ import {
   Title,
   WhiteKeyboardKey,
   WhiteLetter,
-} from "../../components";
-import { LeftCenterRight } from "../../layouts";
+} from '../../components';
+import { LeftCenterRight } from '../../layouts';
 
-import "./App.css";
+import './App.css';
 
 const board = [
-  ["A", "U", "", "", ""],
-  ["", "", "", "", ""],
-  ["", "", "", "", ""],
-  ["", "", "", "", ""],
-  ["", "", "", "", ""],
-  ["", "", "", "", ""],
+  ['A', 'U', '', '', ''],
+  ['', '', '', '', ''],
+  ['', '', '', '', ''],
+  ['', '', '', '', ''],
+  ['', '', '', '', ''],
+  ['', '', '', '', ''],
 ];
 
 const mapBoard =
@@ -39,13 +39,13 @@ const DisplayBoard: FunctionComponent<{ board: string[][] }> = ({ board }) => (
 const Keyboard: FunctionComponent<{}> = () => (
   <div className="p-5  grid grid-rows-3 gap-3 justify-center">
     <div className="grid grid-cols-10 gap-1 justify-center">
-      {["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"].map((l, i) => (
+      {['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'].map((l, i) => (
         <WhiteKeyboardKey letter={l} letterKey={i.toString()} />
       ))}
     </div>
     <div className="grid grid-cols-11 gap-5 justify-items-center justify-center">
       <span />
-      {["A", "S", "D", "F", "G", "H", "J", "K", "L"].map((l, i) => (
+      {['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'].map((l, i) => (
         <WhiteKeyboardKey letter={l} letterKey={i.toString()} />
       ))}
       <span />
@@ -54,7 +54,7 @@ const Keyboard: FunctionComponent<{}> = () => (
       <div className="col-span-2">
         <EnterKey />
       </div>
-      {["Z", "X", "C", "V", "B", "N", "M"].map((l, i) => (
+      {['Z', 'X', 'C', 'V', 'B', 'N', 'M'].map((l, i) => (
         <div className="col-span-1">
           <WhiteKeyboardKey letter={l} letterKey={i.toString()} />
         </div>
@@ -79,11 +79,11 @@ const GamePage: FunctionComponent<{}> = () => {
   );
 };
 
-const Winner: FunctionComponent<{}> = () => <main>{"Winner!"}</main>;
-const Looser: FunctionComponent<{}> = () => <main>{"Looser!"}</main>;
+const Winner: FunctionComponent<{}> = () => <main>{'Winner!'}</main>;
+const Looser: FunctionComponent<{}> = () => <main>{'Looser!'}</main>;
 
-const InfoPage: FunctionComponent<{}> = () => <main>{"InfoPage"}</main>;
-const SettingsPage: FunctionComponent<{}> = () => <main>{"Settings"}</main>;
+const InfoPage: FunctionComponent<{}> = () => <main>{'InfoPage'}</main>;
+const SettingsPage: FunctionComponent<{}> = () => <main>{'Settings'}</main>;
 
 const App: FunctionComponent<{}> = () => {
   return (
@@ -92,7 +92,7 @@ const App: FunctionComponent<{}> = () => {
         <header>
           <nav>
             <LeftCenterRight
-              left={<span className="ml-2">{"right"}</span>}
+              left={<span className="ml-2">{'right'}</span>}
               center={<Title />}
               right={
                 <>

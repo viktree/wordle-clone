@@ -1,18 +1,18 @@
-import { FunctionComponent, useEffect, useState } from "react";
+import { FunctionComponent, useEffect, useState } from 'react';
 
-import { LOCAL_STORAGE_KEYS } from "../../constants";
-import GlobalAppContext from "./context";
+import { LOCAL_STORAGE_KEYS } from '../../constants';
+import GlobalAppContext from './context';
 
 const getInitialIsDarkMode = (): string => {
-  if (typeof window !== "undefined" && window.localStorage) {
+  if (typeof window !== 'undefined' && window.localStorage) {
     const storedPrefs = window.localStorage.getItem(
       LOCAL_STORAGE_KEYS.DARK_MODE
     );
-    if (typeof storedPrefs === "string") {
+    if (typeof storedPrefs === 'string') {
       return storedPrefs;
     }
 
-    const userMedia = window.matchMedia("(prefers-color-scheme: dark)");
+    const userMedia = window.matchMedia('(prefers-color-scheme: dark)');
     if (userMedia.matches) {
       return JSON.stringify(true);
     }
@@ -23,10 +23,10 @@ const getInitialIsDarkMode = (): string => {
 
 const GlobalContextProvider: FunctionComponent<{}> = ({ children }) => {
   const [isDarkModeString, setIsDarkMode] = useState(getInitialIsDarkMode);
-  const isDarkMode = isDarkModeString === "true";
+  const isDarkMode = isDarkModeString === 'true';
 
-  const currentTheme = isDarkMode ? "dark" : "light";
-  const nextTheme = isDarkMode ? "light" : "dark";
+  const currentTheme = isDarkMode ? 'dark' : 'light';
+  const nextTheme = isDarkMode ? 'light' : 'dark';
 
   useEffect(() => {
     const updateTheme = (): void => {

@@ -1,6 +1,6 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent } from 'react';
 
-import "./Toggle.css";
+import './Toggle.css';
 
 const Toggle: FunctionComponent<{
   isDarkMode: boolean;
@@ -20,7 +20,7 @@ const Toggle: FunctionComponent<{
         className="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"
       ></label>
       <label className="hidden" htmlFor="toggle">
-        {isDarkMode ? "Switch to light mode" : "Come to the dark side"}
+        {isDarkMode ? 'Switch to light mode' : 'Come to the dark side'}
       </label>
     </div>
   );
