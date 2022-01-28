@@ -1,13 +1,15 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, useContext } from 'react';
+import { useActor } from '@xstate/react';
 import { compose, flatten, map } from 'ramda';
 
-import { GlobalContextProvider, Toggle } from '..';
+import { GlobalContextProvider, Toggle as ToggleDarkMode, context } from '..';
 import {
   Background,
   BackspaceKey,
   EnterKey,
   InfoButton,
   SettingsButton,
+  ResumePlayButton,
   Title,
   WhiteKeyboardKey,
   WhiteLetter,
@@ -69,6 +71,9 @@ const WordleKeyboard: FunctionComponent<{}> = () => (
   </div>
 );
 
+// const Winner: FunctionComponent<{}> = () => <main>{'Winner!'}</main>;
+// const Looser: FunctionComponent<{}> = () => <main>{'Looser!'}</main>;
+
 const GamePage: FunctionComponent<{}> = () => {
   return (
     <main>
@@ -85,10 +90,83 @@ const GamePage: FunctionComponent<{}> = () => {
   );
 };
 
-// const Winner: FunctionComponent<{}> = () => <main>{'Winner!'}</main>;
-// const Looser: FunctionComponent<{}> = () => <main>{'Looser!'}</main>;
-// const InfoPage: FunctionComponent<{}> = () => <main>{'InfoPage'}</main>;
-// const SettingsPage: FunctionComponent<{}> = () => <main>{'Settings'}</main>;
+const InfoPage: FunctionComponent<{}> = () => (
+  <main>
+    <FlexCenter>
+      <p className="light:text-slate-900 dark:text-white">
+        This is how you play the game, yada yada yada
+      </p>
+    </FlexCenter>
+    <br />
+    <FlexCenter>
+      <ResumePlayButtonAllWiredUp />
+    </FlexCenter>
+    <br />
+    <FlexCenter>
+      Too bad you can't reach the settings page from here!
+    </FlexCenter>
+  </main>
+);
+const SettingsPage: FunctionComponent<{}> = () => {
+  return (
+    <main>
+      <FlexCenter>
+        <p className="light:text-slate-900 dark:text-white">
+          Here are some of the game's settings that you can tweak. You can't go
+          to the info page from here!
+        </p>
+      </FlexCenter>
+      <br />
+      <FlexCenter>
+        <div className="grid grid-cols-2 gap-4">
+          <ToggleDarkMode />
+          <p className="light:text-slate-900 dark:text-white">
+            Toggle Dark Mode!
+          </p>
+        </div>
+      </FlexCenter>
+
+      <br />
+      <FlexCenter>
+        <ResumePlayButtonAllWiredUp />
+      </FlexCenter>
+      <br />
+      <FlexCenter>Too bad you can't reach the info page from here!</FlexCenter>
+    </main>
+  );
+};
+
+const SettingsButtonAllWiredUp = () => {
+  const globalServices = useContext(context);
+  const [, sendToAppService] = useActor(globalServices.appService);
+  return <SettingsButton onClick={() => sendToAppService('changeSettings')} />;
+};
+
+const InfoButtonAllWiredUp = () => {
+  const globalServices = useContext(context);
+  const [, sendToAppService] = useActor(globalServices.appService);
+  return <InfoButton onClick={() => sendToAppService('displayInformation')} />;
+};
+
+const ResumePlayButtonAllWiredUp = () => {
+  const globalServices = useContext(context);
+  const [, sendToAppService] = useActor(globalServices.appService);
+  return <ResumePlayButton onClick={() => sendToAppService('resumePlaying')} />;
+};
+
+const Main = () => {
+  const globalServices = useContext(context);
+  const [screen] = useActor(globalServices.appService);
+  console.log(screen.value);
+
+  return (
+    <>
+      {screen.matches('game') && <GamePage />}
+      {screen.matches('settings') && <SettingsPage />}
+      {screen.matches('info') && <InfoPage />}
+    </>
+  );
+};
 
 const App: FunctionComponent<{}> = () => {
   return (
@@ -96,19 +174,15 @@ const App: FunctionComponent<{}> = () => {
       <Background>
         <header>
           <LeftCenterRight
-            left={<InfoButton onClick={() => {}} />}
+            left={<InfoButtonAllWiredUp />}
             center={<Title />}
-            right={
-              <>
-                <SettingsButton onClick={() => {}} />
-                <Toggle />
-              </>
-            }
+            right={<SettingsButtonAllWiredUp />}
           />
         </header>
-        <GamePage />
+        <Main />
+        {/* <GamePage /> */}
         {/* <InfoPage /> */}
-        {/* <SettingsPage /> */}
+        {/*  */}
         {/* <Winner /> */}
         {/* <Looser /> */}
       </Background>

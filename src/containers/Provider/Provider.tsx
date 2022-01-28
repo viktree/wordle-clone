@@ -1,6 +1,8 @@
 import { FunctionComponent, useEffect, useState } from 'react';
+import { useInterpret } from '@xstate/react';
 
 import { LOCAL_STORAGE_KEYS } from '../../constants';
+import { appMachine } from '../../stateMachines';
 import GlobalAppContext from './context';
 
 const getInitialIsDarkMode = (): string => {
@@ -23,10 +25,14 @@ const getInitialIsDarkMode = (): string => {
 
 const GlobalContextProvider: FunctionComponent<{}> = ({ children }) => {
   const [isDarkModeString, setIsDarkMode] = useState(getInitialIsDarkMode);
-  const isDarkMode = isDarkModeString === 'true';
 
+  // Theme
+  const isDarkMode = isDarkModeString === 'true';
   const currentTheme = isDarkMode ? 'dark' : 'light';
   const nextTheme = isDarkMode ? 'light' : 'dark';
+
+  // Services
+  const appService = useInterpret(appMachine);
 
   useEffect(() => {
     const updateTheme = (): void => {
@@ -51,6 +57,7 @@ const GlobalContextProvider: FunctionComponent<{}> = ({ children }) => {
   const context = {
     isDarkMode,
     toggleIsDarkMode,
+    appService,
   };
   return (
     <GlobalAppContext.Provider value={context}>

@@ -19,6 +19,7 @@ import BackspaceKey from './BackspaceKey/KeyboardKey';
 // Other buttons
 import SettingsButton from './SettingsButton/SettingsButton';
 import InfoButton from './InfoButton/infoButton';
+import ResumePlayButton from './ResumePlayButton/ResumePlayButton';
 
 export {
   Background,
@@ -30,6 +31,7 @@ export {
   GreenLetter,
   InfoButton,
   SettingsButton,
+  ResumePlayButton,
   Title,
   Toggle,
   WhiteKeyboardKey,
