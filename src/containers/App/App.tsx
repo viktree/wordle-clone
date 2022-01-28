@@ -85,11 +85,10 @@ const GamePage: FunctionComponent<{}> = () => {
   );
 };
 
-const Winner: FunctionComponent<{}> = () => <main>{'Winner!'}</main>;
-const Looser: FunctionComponent<{}> = () => <main>{'Looser!'}</main>;
-
-const InfoPage: FunctionComponent<{}> = () => <main>{'InfoPage'}</main>;
-const SettingsPage: FunctionComponent<{}> = () => <main>{'Settings'}</main>;
+// const Winner: FunctionComponent<{}> = () => <main>{'Winner!'}</main>;
+// const Looser: FunctionComponent<{}> = () => <main>{'Looser!'}</main>;
+// const InfoPage: FunctionComponent<{}> = () => <main>{'InfoPage'}</main>;
+// const SettingsPage: FunctionComponent<{}> = () => <main>{'Settings'}</main>;
 
 const App: FunctionComponent<{}> = () => {
   return (
