@@ -1,14 +1,12 @@
 {
   "extends": ["react-app", "react-app/jest", "plugin:prettier/recommended"],
   "overrides": [
-      {
-        "files": [
-          "**/*.stories.*"
-        ],
-        "rules": {
-          "import/no-anonymous-default-export": "off"
-        }
+    {
+      "files": ["**/*.stories.*"],
+      "rules": {
+        "import/no-anonymous-default-export": "off"
       }
-    ],
+    }
+  ],
   "rules": {}
 }
