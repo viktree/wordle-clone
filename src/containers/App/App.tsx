@@ -3,7 +3,7 @@ import { useActor } from '@xstate/react';
 import { compose, flatten, map } from 'ramda';
 import { mapIndexed } from 'ramda-adjunct';
 
-import { GlobalContextProvider, Toggle as ToggleDarkMode, context } from '..';
+import { GlobalContextProvider, ToggleDarkMode, context } from '..';
 import {
   Background,
   BackspaceKey,
