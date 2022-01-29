@@ -1,6 +1,7 @@
 import { FunctionComponent, useContext } from 'react';
 import { useActor } from '@xstate/react';
 import { compose, flatten, map } from 'ramda';
+import { mapIndexed } from 'ramda-adjunct';
 
 import { GlobalContextProvider, Toggle as ToggleDarkMode, context } from '..';
 import {
@@ -29,11 +30,11 @@ const board = [
 
 const WordleBoard: FunctionComponent<{
   board: string[][];
-  Letter: FunctionComponent<{ letter: string }>;
+  Letter: FunctionComponent<{ letter: string; index: number }>;
 }> = ({ board, Letter }) => {
   const showLetters = compose(
     map(Letter),
-    map((letter: string) => ({ letter })),
+    mapIndexed((letter: string, index: number) => ({ letter, index })),
     flatten
   );
 
@@ -44,13 +45,13 @@ const WordleKeyboard: FunctionComponent<{}> = () => (
   <div className="p-5  grid grid-rows-3 gap-3">
     <div className="grid grid-cols-10 gap-1">
       {['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'].map((l, i) => (
-        <WhiteKeyboardKey letter={l} letterKey={i.toString()} />
+        <WhiteKeyboardKey letter={l} index={i.toString()} />
       ))}
     </div>
     <div className="grid grid-cols-11 gap-5 justify-items-center">
       <span />
       {['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'].map((l, i) => (
-        <WhiteKeyboardKey letter={l} letterKey={i.toString()} />
+        <WhiteKeyboardKey letter={l} index={i.toString()} />
       ))}
       <span />
     </div>
@@ -60,7 +61,7 @@ const WordleKeyboard: FunctionComponent<{}> = () => (
       </div>
       {['Z', 'X', 'C', 'V', 'B', 'N', 'M'].map((l, i) => (
         <div className="col-span-1">
-          <WhiteKeyboardKey letter={l} letterKey={i.toString()} />
+          <WhiteKeyboardKey letter={l} index={i.toString()} />
         </div>
       ))}
 
@@ -180,11 +181,6 @@ const App: FunctionComponent<{}> = () => {
           />
         </header>
         <Main />
-        {/* <GamePage /> */}
-        {/* <InfoPage /> */}
-        {/*  */}
-        {/* <Winner /> */}
-        {/* <Looser /> */}
       </Background>
     </GlobalContextProvider>
   );
